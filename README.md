@@ -1,82 +1,35 @@
-## Structure
+Repository Links:
+Front-End: https://github.com/lmplaczkiewicz/full_stack_project
+Back-End: https://github.com/lmplaczkiewicz/full_stack_project_api
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/app.js`](assets/scripts/app.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+Website Links:
+Front-End: https://lmplaczkiewicz.github.io/full_stack_project/
+Back-End: https://full-stack-api.herokuapp.com/
 
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`assets/scripts/config.js`](assets/scripts/config.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
+Technologies Used:
+html
+scss
+javascript
+bootstrap
+handlebars
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
+Unsolved Problems:
+The next project I want to get a full handle on validation of form fields and to design a better opening screen for the user.
 
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
+I was also having issues having multiple error message show up in the center of the screen using bootstrap alerts. I want to invest more time into understanding that to make it more user friendly.
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+Development Progress:
+Thurs - Fri
+I began the project by setting up my main resource, locations, in the back-end and then started on the front-end. I began by doing a bare html page with several buttons linked to modals to test my user and location resource. Once all the CRUD actions were working I linked the tables and re-tested the resources. Once CRUD was working I began pushing forward with styling.
 
-## Adding Images
+Sat - Sun
+Styling was the main item I worked on over the weekend with some bug fixes related to CRUD.
 
-To add images to your project, you must store them in the `public` directory.
-To use the image in HTML or CSS, write the path to the image like this:
+Mon - Tues
+I changed up some display messages. Changed some column names. Added in a company table resource and the CRUD actions in relation to that additional table. I changed the styling to fit two table displays and added in bootstrap alerts for error/success messages. I worked through a few final bugs and some form updates and deployed the last iteration to production.
 
-```html
-<img src="public/cat.jpg">
-```
-or
-```css
-#my-cool-div {
-  background-image: url('public/cat.jpg')
-}
-```
+User Stories:
+https://github.com/lmplaczkiewicz/full_stack_project/blob/master/User_Stories.md
 
-Note that there's no `./` or `/` in front of `public/filename.jpg`.
-
-## Adding Fonts
-
-To add custom fonts to your app, you can either use a CDN like Google Fonts, or
-you can download the fonts and save them in the `public` directory. If you use
-the former method, follow the directions on the website providing the fonts.
-
-For local fonts, put the files in `public`, and then import and use them in a
-`.scss` file like this:
-
-```scss
-@font-face {
-  font-family: 'Nature Beauty';
-  src: url('public/Nature-Beauty.ttf') format('truetype');
-}
-
-.element-with-custom-font {
-  font-family: 'Nature Beauty';
-}
-```
-
-## Tasks
-
-Developers should run these often!
-
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-
-## Additional Resources
-
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+Wireframe:
+https://github.com/lmplaczkiewicz/full_stack_project/blob/master/Wireframe.png

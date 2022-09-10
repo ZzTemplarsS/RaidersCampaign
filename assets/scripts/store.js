@@ -1,6 +1,20 @@
 'use strict'
 
-const store = {
+const user = {
 }
 
-module.exports = store
+const locations = {
+}
+
+const locationId = {
+}
+
+const companies = {
+}
+
+module.exports = {
+  user,
+  locations,
+  locationId,
+  companies
+}
