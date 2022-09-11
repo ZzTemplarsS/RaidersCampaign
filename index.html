@@ -1,313 +1,66 @@
 <!DOCTYPE html>
-<html>
-    <head>
-      <title>Location Management System</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Calculator</title>
+  <meta name="description" content="Simple Calculator With Dark Mode." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="assets/calculator.ico">
+  <link rel="stylesheet" href="styles/dark.css" id="theme" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+</head>
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body class="container-fluid">
-
-      <div id="overlay">
-      <div class="text-center row">
-      <header class="mainPageHeader col-xs-12">
-        <h1 class='titleHead'>Location Management System</h1>
-      </header>
-      </div>
-
-        <div class="frontSuccess animated fadeInDown fadeOutUp col-xs-4 text-center" id="frontSuccess" data-notify-position="top-center"></div>
-
-      <div class="overlayText text-center row">
-        <h1 class="overlayHead col-xs-12" id="overlayAlert">Create Account/Sign In</h1>
-      </div>
-
-      <div class='container text-center signBox col-xs-12 row'>
-        <button type="button" class="frontButton overlaySignButton" data-toggle="modal" data-target="#signUpModal">
-          Create Account
-        </button>
-      </div>
-
-      <div class='container text-center signBox col-xs-12 row'>
-          <button type="button" class=" frontButton overlaySignInButton" data-toggle="modal" data-target="#signInModal">
-            Sign In
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="header-container">
+        <!-- This heading also notifies about the theme change.-->
+        <h1 id="toast">Calculator</h1>
+        <div class="top-buttons">
+          <a href="https://github.com/zxcodes/JavaScript-Calculator">
+            <img src="assets/GitHubLight.svg" alt="Sun Icon" height="22.5" width="22.5" id="github-icon">
+          </a>
+          <button type="button" onclick="changeTheme()" class="theme-button">
+            <img src="assets/SunIcon.svg" alt="Theme Icon" height="19" width="19" id="theme-icon">
           </button>
-      </div>
-
-      <form class="credentialEntry" id="sign-up">
-        <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="signUpModalLabel">Create Account</h3>
-              </div>
-              <div class="modal-body">
-                <div id="errorSignUp"></div>
-                <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" name="credentials[email]" id="email" placeholder="Enter Email" required>
-                </div>
-                <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="credentials[password]" id="password" placeholder="Enter Password" required>
-                </div>
-                <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" class="form-control" name="credentials[password_confirmation]" id="passwordConfirm" placeholder="Confirm Password" required>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn-danger modalCloseButton" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn-primary modalConfirmButton" id="signUpButton">Create Account</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        </form>
-
-        <!-- Modal -->
-        <form class="credentialEntry" id="sign-in">
-        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="signInModalLabel">Account Sign-In</h3>
-              </div>
-              <div class="modal-body">
-                <div id="errorSignIn"></div>
-                <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" name="credentials[email]" id="emailSignIn" placeholder="Enter Email" required>
-                </div>
-                <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="credentials[password]" id="passwordSignIn" placeholder="Enter Password" required>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn-danger modalCloseButton" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn-primary modalConfirmButton" id="signInButton">Access Profile</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        </form>
-      </div>
-
-  <div id="underlay">
-  <nav class="navbar navbar-inverse bg-inverse">
-        <!-- Button trigger modal -->
-
-    <form class='signOut' id="sign-out">
-      <div class="button">
-        <button type="submit" class="topRowButton " data-toggle="" data-target="">
-          Sign Out
-        </button>
-      </div>
-    </form>
-
-    <div class="button" id="changePasswordAccessButton">
-      <button type="button" class="topRowButton " data-toggle="modal" data-target="#changePasswordModal">
-        Change Password
-      </button>
-    </div>
-
-    <form class="credentialEntry" id="change-password">
-      <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Change Password</h3>
-            </div>
-            <div class="modal-body">
-              <div id="errorPasswordChange"></div>
-              <div class="form-group">
-              <label>Current Password</label>
-              <input type="password" class="form-control" name="passwords[old]" id="passwordOld" placeholder="Enter Current Password" required>
-              </div>
-              <div class="form-group">
-              <label>New Password</label>
-              <input type="password" class="form-control" name="passwords[new]" id="passwordNew" placeholder="Enter New Password" required>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn-danger modalCloseButton" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn-primary modalConfirmButton" id="changePasswordButton">Change Password</button>
-            </div>
-          </div>
         </div>
       </div>
-    </form>
-
-    <div class="button" id="getLocationButton">
-      <button type="button" class="topRowButton " data-toggle="modal" data-target="">
-        Display All Locations
-      </button>
-    </div>
-
-    <div class="button" id="findLocationButton">
-      <button type="button" class="topRowButton " data-toggle="modal" data-target="#findLocationModal">
-        Find Location
-      </button>
-    </div>
-
-    <form class="dataAccess" id="findLocation">
-    <div class="modal fade" id="findLocationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="signInModalLabel">Search Your Locations</h3>
-          </div>
-          <div class="modal-body">
-            <div id="errorFindLocation"></div>
-            <div class="form-group">
-            <label>Location Address</label>
-            <input type="text" class="form-control" name="locations[Id]" id="addressFind" placeholder="Enter address" required>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn-danger modalCloseButton" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn-primary modalConfirmButton" id="findButton">Find Location</button>
-          </div>
-        </div>
+      <div class="first-row">
+        <input type="text" name="result" id="result" placeholder="Result" readonly />
+        <input type="button" value="C" onclick="result.value=''" id="clear-button" />
       </div>
-    </div>
-    </form>
-
-    <div class="button" id="addLocationButton">
-      <button type="button" class="topRowButton " data-toggle="modal" data-target="#addLocationModal">
-        Add Location
-      </button>
-    </div>
-
-    <form class="dataAccess" id="addLocation">
-    <div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="signInModalLabel">Add Location</h3>
-          </div>
-          <div class="modal-body">
-            <div id="errorAddLocation"></div>
-            <div class="form-group">
-            <label>Address</label>
-            <input type="text" class="form-control" name="location[address]" id="addressAdd" placeholder="Enter Address" required>
-            </div>
-              <div class="form-group">
-                <label for="exampleSelect1">Business Type</label>
-                <select class="form-control" id="exampleSelect1" name="location[business]">
-                  <option>Service</option>
-                  <option>Merchandising</option>
-                  <option>Manufacturing</option>
-                  <option>Hybrid</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-              <label>Objects Insured</label>
-              <input type="number" min="0" step="1" class="form-control" name="location[objects]" id="unitAdd" placeholder="Enter Total Objects Insured" required>
-              </div>
-              <div class="form-group">
-              <label>Company</label>
-              <input type="text" class="form-control" name="location[company]" id="companyAdd" placeholder="Enter Company Name" required>
-              </div>
-              <div class="form-group">
-              <label>Total Claims</label>
-              <input type="number" min="0" step="1" class="form-control" name="location[claims]" id="complianceAdd" placeholder="Enter Total Number of Claims" required>
-              </div>
-              <div class="form-group">
-              <label>Inspection Date</label>
-              <input pattern="\d{4}-\d{1,2}-\d{1,2}" type="date" class="form-control" name="location[inspection]" id="inspectionAdd" placeholder="YYYY-MM-DD" required>
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn-danger modalCloseButton" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn-primary modalConfirmButton" id="createButton">Create Location</button>
-          </div>
-        </div>
+      <div class="second-row">
+        <input type="button" value="1" onclick="liveScreen(1)" />
+        <input type="button" value="2" onclick="liveScreen(2)" />
+        <input type="button" value="3" onclick="liveScreen(3)" />
+        <input type="button" value="+" onclick="liveScreen('+')" />
       </div>
-    </div>
-    </form>
-
-<!-- Get comapnies -->
-    <div class="button" id="getCompanyButton">
-      <button type="button" class="topRowButton " data-toggle="modal" data-target="">
-        Get Companies
-      </button>
-    </div>
-
-    <div class="button" id="addCompanyButton">
-      <button type="button" class="topRowButton " data-toggle="modal" data-target="#addCompanyModal">
-        Add Company
-      </button>
-    </div>
-
-    <form class="dataAccess" id="addCompany">
-    <div class="modal fade" id="addCompanyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="signInModalLabel">Add Company</h3>
-          </div>
-          <div class="modal-body">
-            <div id="errorAddCompany"></div>
-            <div class="form-group">
-            <label>Company Name</label>
-            <input type="text" class="form-control" name="company[name]" id="companyNameAdd" placeholder="Enter Company Name" required>
-            </div>
-              <div class="form-group">
-              <label>Risk Manager</label>
-              <input type="text" class="form-control" name="company[manager]" id="managerAdd" placeholder="Enter Risk Manager Name" required>
-              </div>
-              <div class="form-group">
-              <label>Enter Contact Number</label>
-              <input type="text" class="form-control" name="company[phone]" id="phoneAdd" placeholder="Enter Risk Manager Phone Number" required>
-              </div>
-              <div class="form-group">
-              <label>Enter Contact Email</label>
-              <input type="email" class="form-control" name="company[email]" id="complianceAdd" placeholder="Enter Risk Manager Email" required>
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn-danger modalCloseButton" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn-primary modalConfirmButton" id="createButton">Create Company</button>
-          </div>
-        </div>
+      <div class="third-row">
+        <input type="button" value="4" onclick=" liveScreen(4)" />
+        <input type="button" value="5" onclick=" liveScreen(5)" />
+        <input type="button" value="6" onclick=" liveScreen(6)" />
+        <input type="button" value="-" onclick="liveScreen('-')" />
       </div>
-    </div>
-    </form>
-  </nav>
-
-  <div class="uiError animated fadeInDown fadeOutUp col-xs-1 text-center" id="uiError" data-notify-position="top-left"></div>
-  <div class="uiSuccess animated fadeInDown fadeOutUp col-xs-1 text-center" id="uiSuccess" data-notify-position="top-left"></div>
-  <div class="uiWarning animated fadeInDown fadeOutUp col-xs-1 text-center" id="uiWarning" data-notify-position="top-left"></div>
-
-  <div class="modalError animated fadeInDown fadeOutUp col-xs-1 text-center" id="modalError" data-notify-position="top-center"></div>
-
-  <div class="uiCompError animated fadeInDown fadeOutUp col-xs-1 text-center" id="uiCompanyError" data-notify-position="top-right"></div>
-  <div class="uiCompSuccess animated fadeInDown fadeOutUp col-xs-1 text-center" id="uiCompSuccess" data-notify-position="top-right"></div>
-  <div class="uiCompWarning animated fadeInDown fadeOutUp col-xs-1 text-center" id="uiCompWarning" data-notify-position="top-right"></div>
-
-  <div class="contentHead col-xs-12 text-center" id="userDisplayContainer">
-    <h2 class="userMessages" id="userDisplay">Welcome to the Location Management System</h2>
-  </div>
-
-  <section class="contentDisplay">
-  <div class="row">
-    <div class="content col-xs-6" id="contentDisplay">
-    </div>
-    <div class="content col-xs-6" id="companyDisplay">
+      <div class="fourth-row">
+        <input type="button" value="7" onclick="liveScreen(7)" />
+        <input type="button" value="8" onclick="liveScreen(8)" />
+        <input type="button" value="9" onclick=" liveScreen(9)" />
+        <input type="button" value="x" onclick="liveScreen('*')" />
+      </div>
+      <div class="fifth-row">
+        <input type="button" value="/" onclick="liveScreen('/')" />
+        <input type="button" value="0" onclick="liveScreen(0)" />
+        <input type="button" value="." onclick="liveScreen('.')" />
+        <input type="button" value="=" onclick="calculate(result.value)" />
+      </div>
     </div>
   </div>
-  </section>
-  <!-- <section class="companyDisplay row">
+  <script src="scripts/script.js">
+  </script>
+</body>
 
-  </section> -->
-
-</div>
-    </body>
 </html>
